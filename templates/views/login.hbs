@@ -1,0 +1,817 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{>navbar}}
+      <div class="container">
+          <div class="col6-sm-6">
+              <h1>Employee login from</h1>
+         <div class="account-wall">
+             <form action="/login" class="form-signin" method="POST">
+     
+     <input type="text"required name="email"><br>
+            <input type="password" required name="password"><br>
+            <button type="submit">sign in</button>
+           <label >
+               <input type="checkbox">
+               Remember me
+           </label>
+           <a href="#">need help</a>
+             </form>
+         </div>
+         <a href="/register">create an account</a>
+         
+          </div>
+      </div>
+    
+</body>
+</html> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'poppins',sans-serif;
+
+        }
+        body{
+            
+            width: 100%;
+            height: 100vh;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+           background: -webkit-linear-gradient(left,#d8dbfd,#fc83d3);
+           /* background: -webkit-linear-gradient(left,#7579ff,#b224ef); */
+        }
+   
+        #cont{
+           overflow: hidden;
+           position: relative;
+           width: 1100px;
+           height: 550px;
+           background-color: #fff;
+           box-shadow: 10px 10px 10px 0 gray;
+           
+        }
+
+     /* .box{
+         display: flex;
+         border: 2px solid rgb(255, 0, 140);
+         height: 300px;
+         width: 500px;
+         color: #f53677;
+         background: #ff4584;
+          color: #fff;
+          outline: none;
+         
+     }
+     
+ */
+
+
+
+
+
+
+
+
+
+        section{
+            
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        .imgBx{
+            /* transform: scale(1); */
+            position: relative;
+            width:50%;
+            height: 100%;
+        }
+        .imgBx:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(225deg,#e4165a,#23a4e0);
+            /* background: linear-gradient(225deg,#e91e63,#03a9f4); */
+            z-index: ;
+            mix-blend-mode: screen;
+  
+        }
+        .imgBx img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contentBx{
+
+            display: flex;
+            width: 50%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .contentBx.formBx{
+            width: 50%;
+        }
+        .formBx h2{
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #ff4584;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+        .inputBx span{
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #607d8b;
+            font-weight: 300;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        .inputBx input{
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            outline: none;
+            font-weight: 400;
+            border: 1px solid #607d8b;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: #607d8b;
+            background: transparent;
+            border-radius: 30px;
+        }
+        .inputBx input[type="submit"]{
+          background: #ff4584;
+          color: #fff;
+          outline: none;
+          border: none;
+          font-weight: 500;
+          cursor: pointer;
+
+        }
+        .inputBx input[type="submit"]:hover{
+            background:#f53677 ;
+        }
+        .remember{
+            margin-bottom: 10px;
+            color: #607d8b;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .inputBx  a{
+            color: #607d8b;
+        }
+        #sign{
+            color: #ff4584;
+        }
+        .formBx h3{
+            color:#607d8b;
+            text-align: center;
+            margin: 50px 0 10px;
+            font-weight: 500;
+        }
+        .sci{
+             margin-left: 40px;
+            /*display: flex; */
+        }
+      
+   
+        
+       
+        .container{
+		width: 90%;
+		padding: 2px;
+		margin: 10px auto;
+	
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.box{
+		width: 50px;
+		height: 50px;
+		/* background: rgb(255, 255, 255); */
+        background: rgb(255 255 255/0.9);
+    margin: 0px 10px;
+    transition: 0.5s;
+border-radius: 50%;
+
+	}
+    .icon{
+        /* position:fixed; */
+        width: 50px;
+		height: 50px;
+		background: rgba(255, 255, 255, 0.281);
+    /* margin: 10px 10px; */
+    /* transition: 0.5s; */
+border-radius: 50%;
+    }
+	.box:hover{
+		transform: scale(1.3);
+		
+		z-index: 2;
+		/* box-shadow: 2px 2px 2px #000; */
+		
+	}
+
+
+
+        @media(max-width:768px){
+            
+
+            #cont{
+           overflow: hidden;
+           position: relative;
+           width: 100%;
+           height: 100%;
+           /* background-color: rgba(255, 255, 255, 0.473); */
+        }
+
+
+            .formBx h2{
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #ff4584;
+            display: inline-block;
+            letter-spacing: 1px;
+          padding-left: 10px;
+        }
+
+            .imgBx{
+                position:absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+               
+            }
+            .contentBx{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+            .formBx{
+                width: 100%;
+                padding: 15px;
+                border-radius: 10px;
+                background: rgb(255 255 255/0.9);
+                margin: 20px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+            /* .sci li{
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: #607d8b;
+            border-radius: 50%;
+            margin: 1px;
+            cursor: pointer;
+            margin-left: 1px;
+        } */
+
+
+
+
+/* //////////////////////////////////////////////// */
+
+        /* .sci li img:hover{
+            background: #fcfcfc;
+            width: 62px;
+            height: 62px;
+        }
+        .sci li img{
+        
+           margin: 0;
+           background: #ffffff;
+           padding:2px ;
+        } */
+        /* .sci img{ 
+            list-style: none;
+            width: 60px;
+            height: 60px;
+            background-color: #d8dbfd; */
+            /* color: #d8dbfd; */
+             /* border-radius:60%; */
+           /* transform: scale(0.5);
+            filter: invert(1); */
+            /* margin: 10px; */
+            
+        /* } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .formBx h3{
+            color:#607d8b;
+            text-align: center;
+            margin: 40px 0 10px;
+            font-weight: 500;
+        }
+        .imgBx:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(225deg,#e91e63,#03a9f4);
+            /* background: linear-gradient(225deg,#e91e63,#03a9f4); */
+            z-index: 1;
+            mix-blend-mode: screen;
+  
+        }
+        
+        p{
+            color: #607d8b;
+        }
+        }
+    </style>
+
+</head>
+    <body id="body">
+     {{!-- {{>navbar}} --}}
+
+    <section  id="cont" >
+        <div class="imgBx">
+       <img  src="https://i.pinimg.com/originals/a9/37/c7/a937c74f19f82e905cc45ddd0e9ba042.jpg" alt="">
+        </div>
+        
+        <div class="contentBx">
+            <div class="formBx">
+      <h2>SIGN IN</h2>
+      <form action="/login" class="form-signin" method="POST">
+     <div class="inputBx">
+         <span>email</span>
+         <input type="text" required name="email">
+     </div>
+     <div class="inputBx">
+        <span>password</span>
+        <input type="password" required name="password">
+    </div>
+    <!-- <div class="remember">
+     <label ><input type="checkbox" name="">Remember me</label>
+        
+    </div> -->
+    <div class="inputBx">
+      
+        <input type="submit" name="" href="/">
+    </div>
+
+    <div class="inputBx">
+       
+        <p>don't haven account? <a id="sign" href="">sign up</a></p>
+        <a href="">forgot password</a>
+    </div>
+   
+
+
+    <h3>login with social media</h3>
+    <div class="container">
+        <div class="box">
+            <img class="icon" src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png" >
+        </div>
+        <div class="box">
+           <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" > </li>
+        </div>
+        <div class="box">
+ <img class="icon" src="https://www.buysocialbuzz.com/wp-content/uploads/2018/10/youtube-logo.png" alt=""></li>
+        </div>
+      
+    </div>
+    </div>
+        <!-- </div>
+        <div class="box">
+
+        </div> -->
+         </form>
+    </section>
+
+
+</body>
+</html>
+
+
+
+{{!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY ANTAHEEN INDIA</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'poppins',sans-serif;
+
+        }
+        body{
+            
+            width: 100%;
+            height: 100vh;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+           background: -webkit-linear-gradient(left,#d8dbfd,#fc83d3);
+    
+        }
+   
+        #cont{
+           overflow: hidden;
+           position: relative;
+           width: 1100px;
+           height: 550px;
+           background-color: #fff;
+           box-shadow: 10px 10px 10px 0 gray;
+           
+        }
+
+ 
+
+
+
+
+
+
+
+        section{
+            
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+        .imgBx{
+          
+            position: relative;
+            width:50%;
+            height: 100%;
+        }
+        .imgBx:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(225deg,#e4165a,#23a4e0);
+          
+            z-index: ;
+            mix-blend-mode: screen;
+  
+        }
+        .imgBx img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contentBx{
+
+            display: flex;
+            width: 50%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .contentBx.formBx{
+            width: 50%;
+        }
+        .formBx h2{
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #ff4584;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+        .inputBx span{
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #607d8b;
+            font-weight: 300;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        .inputBx input{
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            outline: none;
+            font-weight: 400;
+            border: 1px solid #607d8b;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: #607d8b;
+            background: transparent;
+            border-radius: 30px;
+        }
+        .inputBx input[type="submit"]{
+          background: #ff4584;
+          color: #fff;
+          outline: none;
+          border: none;
+          font-weight: 500;
+          cursor: pointer;
+
+        }
+        .inputBx input[type="submit"]:hover{
+            background:#f53677 ;
+        }
+        .remember{
+            margin-bottom: 10px;
+            color: #607d8b;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .inputBx  a{
+            color: #607d8b;
+        }
+        #sign{
+            color: #ff4584;
+        }
+        .formBx h3{
+            color:#607d8b;
+            text-align: center;
+            margin: 50px 0 10px;
+            font-weight: 500;
+        }
+        .sci{
+             margin-left: 40px;
+            /*display: flex; */
+        }
+      
+   
+        
+       
+        .container{
+		width: 90%;
+		padding: 2px;
+		margin: 10px auto;
+	
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.box{
+		width: 50px;
+		height: 50px;
+	
+        background: rgb(255 255 255/0.9);
+    margin: 0px 10px;
+    transition: 0.5s;
+border-radius: 50%;
+
+	}
+    .icon{
+      
+        width: 50px;
+		height: 50px;
+		background: rgba(255, 255, 255, 0.281);
+
+border-radius: 50%;
+    }
+	.box:hover{
+		transform: scale(1.3);
+		
+		z-index: 2;
+		
+		
+	}
+
+
+
+        @media(max-width:768px){
+            
+
+            #cont{
+           overflow: hidden;
+           position: relative;
+           width: 100%;
+           height: 100%;
+         
+        }
+
+
+            .formBx h2{
+            color: #607d8b;
+            font-weight: 600;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #ff4584;
+            display: inline-block;
+            letter-spacing: 1px;
+          padding-left: 10px;
+        }
+
+            .imgBx{
+                position:absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+               
+            }
+            .contentBx{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+            .formBx{
+                width: 100%;
+                padding: 15px;
+                border-radius: 10px;
+                background: rgb(255 255 255/0.9);
+                margin: 20px;
+                margin-bottom: 30px;
+                margin-top: 30px;
+            }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .formBx h3{
+            color:#607d8b;
+            text-align: center;
+            margin: 40px 0 10px;
+            font-weight: 500;
+        }
+        .imgBx:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(225deg,#e91e63,#03a9f4);
+       
+            z-index: 1;
+            mix-blend-mode: screen;
+  
+        }
+        
+        p{
+            color: #607d8b;
+        }
+        }
+    </style>
+</head>
+<body id="body">
+    <section  id="cont" >
+        <div class="imgBx">
+       <img  src="bgbest.jpg" alt="">
+        </div>
+        
+        <div class="contentBx">
+            <div class="formBx">
+      <h2>SIGN IN</h2>
+      <form action="/login" class="form-signin" method="POST">
+     <div class="inputBx">
+         <span>email</span>
+         <input type="text" required name="email">
+     </div>
+     <div class="inputBx">
+        <span>password</span>
+        <input type="password" required name="password">
+    </div>
+
+    <div class="inputBx">
+      
+        <input type="submit" name="">
+    </div>
+
+    <div class="inputBx">
+       
+        <p>don't haven account? <a id="sign" href="">sign up</a></p>
+        <a href="">forgot password</a>
+    </div>
+   
+
+
+    <h3>login with social media</h3>
+    <div class="container">
+        <div class="box">
+            <img class="icon" src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-icon-png-images-icons-and-png-backgrounds-1.png" >
+        </div>
+        <div class="box">
+           <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" > </li>
+        </div>
+        <div class="box">
+ <img class="icon" src="https://www.buysocialbuzz.com/wp-content/uploads/2018/10/youtube-logo.png" alt=""></li>
+        </div>
+      
+    </div>
+    </div>
+      
+         </form>
+    </section>
+</body>
+</html> --}}
+
+
+
+
